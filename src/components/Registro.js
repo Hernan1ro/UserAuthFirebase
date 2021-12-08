@@ -1,14 +1,15 @@
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
-import { registerSincrono } from "../actions/actionsRegister";
+// import { registerSincrono } from "../actions/actionsRegister";
+import { registroEmailPasswordNombre } from "../actions/actionsRegister";
 import { useDispatch } from "react-redux";
 
 export const Registro = () => {
   const dispatch = useDispatch();
   const [formValues, handleInputChange] = useForm({
     nombre: "Hernán",
-    email: "hernandmf@gmail.com",
+    email: "jenny@gmail.com",
     pass1: "123456",
     pass2: "123456",
   });
@@ -16,8 +17,12 @@ export const Registro = () => {
 
   const handleRegistro = (e) => {
     e.preventDefault();
-    dispatch(registerSincrono(email, pass1, nombre));
+    dispatch(registroEmailPasswordNombre(email, pass1, nombre));
   };
+  // const handleRegistro = (e) => {
+  //   e.preventDefault();
+  //   dispatch(registerSincrono(email, pass1, nombre));
+  // };
   return (
     <div>
       <Form onSubmit={handleRegistro}>
