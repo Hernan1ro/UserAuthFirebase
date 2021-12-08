@@ -3,7 +3,11 @@ import { Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { loginSincrono, loginGoogle } from "../actions/actionLogin";
+import {
+  loginEmailPassword,
+  loginSincrono,
+  loginGoogle,
+} from "../actions/actionLogin";
 
 function Login() {
   const dispatch = useDispatch();
@@ -16,13 +20,13 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(loginSincrono(email, password));
+    dispatch(loginEmailPassword(email, password));
   };
   const handleGoogle = () => {
     dispatch(loginGoogle());
   };
   return (
-    <Form>
+    <Form onSubmit={handleLogin}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Correo</Form.Label>
         <Form.Control
